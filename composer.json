@@ -3,10 +3,10 @@
     "description": "Globalpay integration for Magento 2",
     "require": {
         "magento/magento-composer-installer": "^0.1.13",
-        "globalpay/sdk": "^1"
+        "globalpayredeban/sdk-php": "^1"
     },
     "type": "magento2-module",
-    "version": "2.1.8",
+    "version": "2.2.0",
     "license": [
         "OSL-3.0",
         "AFL-3.0"
