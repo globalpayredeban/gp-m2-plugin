@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <globalpay_gateway>
+                <active>0</active>
+                <title>Pay with Globalpay</title>
+                <credentials>
+                    <production>
+                        <production_server_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                        <production_client_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                    </production>
+                    <staging>
+                        <staging_server_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                        <staging_client_key backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                    </staging>
+                </credentials>
+                <supported_countries>MX,EC,CO,BR,PE,AR,VE,CL</supported_countries>
+                <supported_currencies>MXN,USD,COP,BRL,PEN,ARS,VEF,CLP</supported_currencies>
+                <debug>0</debug>
+
+                <!-- Required configuration -->
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_void>1</can_void>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+                <currency>USD</currency>
+                <is_gateway>1</is_gateway>
+                <model>CardPaymentFacade</model>
+                <order_status>pending_payment</order_status>
+                <payment_action>authorize</payment_action>
+                <sort_order>0</sort_order>
+            </globalpay_gateway>
+
+            <globalpay_card>
+                <!-- Default configuration-->
+                <active>0</active>
+                <title>Pay with card</title>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_void>1</can_void>
+                <can_refund>1</can_refund>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+                <currency>USD</currency>
+                <is_gateway>1</is_gateway>
+                <model>CardPaymentFacade</model>
+                <order_status>pending_payment</order_status>
+                <debug>0</debug>
+                <sort_order>0</sort_order>
+
+                <!-- Custom configuration-->
+                <environment>stg</environment>
+                <payment_action>authorize</payment_action>
+                <supported_brands>VI,MC,AX,DI,DC,EL,CS,SO,EX,AK,CD,SX,JC,AU,CN</supported_brands>
+                <allow_installments>1</allow_installments>
+                <min_order_total>1</min_order_total>
+                <sort_order>0</sort_order>
+            </globalpay_card>
+
+            <globalpay_ltp>
+                <!-- Default configuration-->
+                <active>0</active>
+                <title>Pay with LTP</title>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>0</can_use_internal>
+                <is_offline>1</is_offline>
+                <group>offline</group>
+                <currency>USD</currency>
+                <model>LinkToPayFacade</model>
+                <order_status>pending_payment</order_status>
+                <debug>0</debug>
+                <sort_order>0</sort_order>
+
+                <!-- Custom configuration-->
+                <environment>stg</environment>
+                <min_order_total>1</min_order_total>
+                <sort_order>0</sort_order>
+            </globalpay_ltp>
+
+        </payment>
+    </default>
+</config>
