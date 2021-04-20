@@ -5,8 +5,8 @@ namespace Globalpay\PaymentGateway\Gateway\Http\Client;
 use Magento\Framework\Validator\Exception as MagentoValidatorException;
 use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
-use Globalpay\Exceptions\GlobalpayErrorException;
-use Globalpay\Globalpay;
+use Payment\Exceptions\PaymentErrorException as GlobalpayErrorException;
+use Payment\Payment as Globalpay;
 use Globalpay\PaymentGateway\Gateway\Config\GatewayConfig;
 use Globalpay\PaymentGateway\Helper\Logger;
 

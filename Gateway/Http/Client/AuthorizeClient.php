@@ -2,7 +2,7 @@
 
 namespace Globalpay\PaymentGateway\Gateway\Http\Client;
 
-use Globalpay\Globalpay;
+use Payment\Payment as Globalpay;
 use Globalpay\PaymentGateway\Gateway\Config\CardConfig;
 use Globalpay\PaymentGateway\Gateway\Config\GatewayConfig;
 use Globalpay\PaymentGateway\Model\Adminhtml\Source\Currency;

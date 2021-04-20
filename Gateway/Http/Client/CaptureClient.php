@@ -3,8 +3,8 @@
 namespace Globalpay\PaymentGateway\Gateway\Http\Client;
 
 use Magento\Sales\Model\Order\Payment;
-use Globalpay\Exceptions\GlobalpayErrorException;
-use Globalpay\Globalpay;
+use Payment\Exceptions\PaymentErrorException as GlobalpayErrorException;
+use Payment\Payment as Globalpay;
 use Globalpay\PaymentGateway\Gateway\Config\CardConfig;
 use Globalpay\PaymentGateway\Gateway\Config\GatewayConfig;
 use Globalpay\PaymentGateway\Model\Adminhtml\Source\Currency;
