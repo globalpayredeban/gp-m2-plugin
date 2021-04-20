@@ -8,7 +8,7 @@ This module is a solution that allows Magento users to easily process payments w
 
 Install the latest version.  `composer require globalpay/payment-gateway`
 
-Install a specific version.  `composer require globalpay/payment-gateway:2.1.8`
+Install a specific version.  `composer require globalpay/payment-gateway:2.2.0`
 
 Once the installation finished, continue with the next commands in your bash terminal.
 
