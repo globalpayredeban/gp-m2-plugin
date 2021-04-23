@@ -17,7 +17,7 @@ namespace Globalpay\PaymentGateway\Plugin;
          $request,
          $action
      ) {
-         if ($request->getOriginalPathInfo() == '/rest/V2/webhook/updateOrderWebhook') {
+         if ($request->getOriginalPathInfo() == '/rest/V2/webhook/globalpay') {
              return; // Skip CSRF check
          }
          $proceed($request, $action); // Proceed Magento 2 core functionalities

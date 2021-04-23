@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
-    <route url="/V2/webhook/updateOrderWebhook" method="POST">
+    <route url="/V2/webhook/globalpay" method="POST">
         <service class="Globalpay\PaymentGateway\Api\WebhookInterface" method="updateOrderWebhook"/>
         <resources>
             <resource ref="anonymous"/>

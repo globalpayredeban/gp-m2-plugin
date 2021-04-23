@@ -8,7 +8,7 @@ This module is a solution that allows Magento users to easily process payments w
 
 Install the latest version.  `composer require globalpay/payment-gateway`
 
-Install a specific version.  `composer require globalpay/payment-gateway:2.2.0`
+Install a specific version.  `composer require globalpay/payment-gateway:2.2.1`
 
 Once the installation finished, continue with the next commands in your bash terminal.
 
@@ -32,12 +32,12 @@ Now you can see the Globalpay settings in this path `Stores > Configuration > Sa
 
 
 ## Maintenance
-If you need update the plugin to latest version execute: `composer update globalpay/payment-gateway` or `composer require globalpay/payment-gateway:2.2.0` for specific version.
+If you need update the plugin to latest version execute: `composer update globalpay/payment-gateway` or `composer require globalpay/payment-gateway:2.2.1` for specific version.
 
 ## Webhook Notifications and Order Updates
 Every time a transaction changes their status you will get an HTTP POST request from Globalpay to your webhook.
 
 The URL that will be used for the order updates via webhook is:
-`https://magentodomain.com/V2/webhook/updateOrderWebhook`
+`https://magentodomain.com/rest/V2/webhook/globalpay`
 
 This URL will be configured on Globalpay.

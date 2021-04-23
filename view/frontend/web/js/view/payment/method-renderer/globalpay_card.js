@@ -144,10 +144,9 @@ define(
 
             getTotal: function () {
                 if (totals.totals()) {
-                    var grandTotal = parseFloat(totals.totals()['grand_total']);
-                    return grandTotal;
+                    return Math.round(parseFloat(totals.totals()['base_grand_total']));
                 } else {
-                    return window.checkoutConfig.totalsData.grand_total;
+                    return Math.round(parseFloat(window.checkoutConfig.totalsData.base_grand_total));
                 }
             },
 

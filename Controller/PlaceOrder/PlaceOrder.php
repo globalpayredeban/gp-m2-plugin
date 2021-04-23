@@ -188,7 +188,7 @@ class PlaceOrder extends AbstractController
                "dev_reference"     => $orderId,
                "description"       => $description,
                "amount"            => (float)$order->getGrandTotal(),
-               "installments_type" => $this->config->allowInstallments(),
+               "installments_type" => $this->_mapInstallments(),
                "currency"          => $order->getOrderCurrencyCode()
            ],
            "configuration" => [
@@ -245,5 +245,20 @@ class PlaceOrder extends AbstractController
         $tokenHash   = hash('sha256', $tokenString);
         $authToken   = base64_encode($serverCredentials['application_code'] . ';' . $timestamp . ';' . $tokenHash);
         return $authToken;
+    }
+
+    /**
+     * Maps the installments_type with the allowInstallments config
+     *
+     * @return int
+     */
+    protected function _mapInstallments(): int
+    {
+        // TODO: Prosa installments when available
+        if ($this->config->allowInstallments()) {
+            return 0;
+        } else {
+            return -1;
+        }
     }
 }

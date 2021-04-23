@@ -15,7 +15,7 @@ define(
                 template: 'Globalpay_PaymentGateway/payment/globalpay_ltp'
             },
             afterPlaceOrder: function () {
-                redirectOnSuccessAction.redirectUrl = url.build("redirectlinktopay/placeorder/placeorder");
+                redirectOnSuccessAction.redirectUrl = url.build("redirectlinktopayglobalpay/placeorder/placeorder");
                 this.redirectAfterPlaceOrder = true;
                 redirectOnSuccessAction.execute();
             }
