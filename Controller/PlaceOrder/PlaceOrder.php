@@ -174,7 +174,7 @@ class PlaceOrder extends AbstractController
         $orderId        = $order->getIncrementId();
         $email          = $order->getCustomerEmail();
         $shippingMethod = $order->getShippingMethod();
-        $description    = substr(sprintf('Payment of order #%s, Customer email: %s Shipping method: %s', $orderId, $email, $shippingMethod), 0, 247);
+        $description    = substr(sprintf('Order #%s, Email: %s Shipping: %s', $orderId, $email, $shippingMethod), 0, 99);
         $urlBase        = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WEB);
         $viewOrderURL   = $urlBase.'sales/order/view/order_id/'.$order->getId();
         return [
