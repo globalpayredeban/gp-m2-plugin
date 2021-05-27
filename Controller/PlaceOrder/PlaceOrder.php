@@ -21,7 +21,7 @@ use Globalpay\PaymentGateway\Helper\Logger;
  */
 class PlaceOrder extends AbstractController
 {
-    const LTP_PATH = "globalpay.com/linktopay/init_order/";
+    const LTP_PATH = "globalpay.com.co/linktopay/init_order/";
     /**
      * @var AgreementsValidatorInterface
      */
