@@ -32,7 +32,7 @@ Now you can see the Globalpay settings in this path `Stores > Configuration > Sa
 
 
 ## Maintenance
-If you need update the plugin to latest version execute: `composer update globalpay/payment-gateway` or `composer require globalpay/payment-gateway:2.2.3 for specific version.
+If you need update the plugin to latest version execute: `composer update globalpay/payment-gateway` or `composer require globalpay/payment-gateway:2.2.3` for specific version.
 
 ## Webhook Notifications and Order Updates
 Every time a transaction changes their status you will get an HTTP POST request from Globalpay to your webhook.
