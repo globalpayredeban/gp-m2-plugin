@@ -4,7 +4,7 @@
         <policy id="script-src">
             <values>
                 <value id="jquery" type="host">https://code.jquery.com/jquery-1.11.3.min.js</value>
-                <value id="shieldgate_sdk" type="host">https://cdn.globalpay.com.co/ccapi/sdk/payment_stable.min.js</value>
+                <value id="globalpay_sdk" type="host">https://cdn.globalpay.com.co/ccapi/sdk/payment_stable.min.js</value>
             </values>
         </policy>
         <policy id="connect-src">
@@ -15,7 +15,7 @@
         </policy>
         <policy id="style-src">
             <values>
-                <value id="shieldgate_css" type="host">https://cdn.globalpay.com.co/ccapi/sdk/payment_stable.min.css</value>
+                <value id="globalpay_css" type="host">https://cdn.globalpay.com.co/ccapi/sdk/payment_stable.min.css</value>
             </values>
         </policy>
     </policies>
