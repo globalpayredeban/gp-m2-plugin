@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="jquery" type="host">https://code.jquery.com/jquery-1.11.3.min.js</value>
+                <value id="shieldgate_sdk" type="host">https://cdn.globalpay.com.co/ccapi/sdk/payment_stable.min.js</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="pg-micros-stg" type="host">https://pg-micros-stg.globalpay.com.co</value>
+                <value id="pg-micros-prod" type="host">https://pg-micros.globalpay.com.co</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="shieldgate_css" type="host">https://cdn.globalpay.com.co/ccapi/sdk/payment_stable.min.css</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>
