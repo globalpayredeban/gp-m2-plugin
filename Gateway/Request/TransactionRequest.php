@@ -81,6 +81,11 @@ class TransactionRequest implements BuilderInterface
             ]
         ];
 
+        $installment_type = (int)$payment->getAdditionalInformation('installment_type');
+        if ($installment_type != -1) {
+            $transaction_body['order']['installments_type'] = $installment_type;
+        }
+
         return $transaction_body;
     }
 }

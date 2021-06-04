@@ -49,6 +49,13 @@
                         <config_path>payment/globalpay_card/allow_installments</config_path>
                     </field>
 
+                    <!--This will apply in future integrations-->
+                    <!---field id="card_installments_types" translate="label" type="multiselect" sortOrder="60" showInDefault="0" showInWebsite="1" showInStore="0">
+                        <label>Supported Brands</label>
+                        <source_model>Globalpay\PaymentGateway\Model\Adminhtml\Source\InstallmentsTypes</source_model>
+                        <config_path>payment/globalpay_card/installments_types</config_path>
+                    </field-->
+
                     <field id="card_min_order_total" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
                         <label>Minimum Order Total</label>
                         <frontend_class>validate-number</frontend_class>

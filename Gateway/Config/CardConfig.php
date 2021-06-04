@@ -11,6 +11,7 @@ class CardConfig extends GatewayConfig
     const CODE = 'globalpay_card';
     const SUPPORTED_BRANDS = 'supported_brands';
     const ALLOW_INSTALLMENTS = 'allow_installments';
+    const INSTALLMENTS_TYPES = 'installments_types';
 
     /**
      * CardConfig constructor.
@@ -42,6 +43,16 @@ class CardConfig extends GatewayConfig
         $allows_installments = (boolean)(int)$this->getValue(self::ALLOW_INSTALLMENTS);
         $this->logger->debug(sprintf('CardConfig.allowInstallments: %s', $allows_installments));
         return $allows_installments;
+    }
+
+    /**
+     * @return array
+     */
+    public function getInstallmentsTypes()
+    {
+        $installments_types = explode(',', $this->getValue(self::INSTALLMENTS_TYPES));
+        $this->logger->debug(sprintf('CardConfig.getInstallmentsTypes'), $installments_types);
+        return $installments_types;
     }
 
 }

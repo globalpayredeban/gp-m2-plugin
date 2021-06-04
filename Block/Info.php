@@ -39,6 +39,7 @@ class Info extends ConfigurableInfo
                 'Card Type' => Brand::getBrandName($payment->getAdditionalInformation('card_type')),
                 'Authorization Code' => $payment->getAdditionalInformation('authorization_code'),
                 'Installments' => $payment->getAdditionalInformation('installment'),
+                'Installments Type' => $payment->getAdditionalInformation('installment_type'),
                 'Message' => $payment->getAdditionalInformation('message'),
                 'Carrier Code' => $payment->getAdditionalInformation('carrier_code'),
             ];
@@ -49,7 +50,7 @@ class Info extends ConfigurableInfo
                 $info['Status Detail'] = $payment->getAdditionalInformation('status_detail');
                 $info['Add Card Transaction'] = $payment->getAdditionalInformation('card_tr');
             }
-        } elseif ($method == 'globalpay_ltp') {
+        } elseif ($method == 'paymentez_ltp') {
             $info = [
                 'LinkToPay'          => $payment->getAdditionalInformation('ltp_url'),
                 'Expiration Days'    => $payment->getAdditionalInformation('expiration_days'),

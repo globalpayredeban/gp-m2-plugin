@@ -42,9 +42,12 @@ class DataAssignObserver extends AbstractDataAssignObserver
 
             case CardConfig::CODE:
                 $installment = isset($additional_data['installment']) ? $additional_data['installment'] : 1;
+                $installment_type = isset($additional_data['installment_type']) ? $additional_data['installment_type'] : -1;
+
                 $token = isset($additional_data['token']) ? $additional_data['token'] : null;
 
                 $paymentInfo->setAdditionalInformation('installment', $installment);
+                $paymentInfo->setAdditionalInformation('installment_type', $installment_type);
                 $paymentInfo->setAdditionalInformation('token', $token);
                 break;
 

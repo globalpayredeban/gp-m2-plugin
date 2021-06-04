@@ -18,12 +18,14 @@ define(
             defaults: {
                 template: 'Globalpay_PaymentGateway/payment/globalpay_card',
                 installment: '',
+                installment_type: ''
             },
 
             initObservable: function () {
                 this._super()
                     .observe([
                         'installment',
+                        'installment_type'
                     ]);
                 return this;
             },
@@ -33,6 +35,7 @@ define(
                     'method': this.item.method,
                     'additional_data': {
                         'installment': this.installment(),
+                        'installment_type': this.installment_type(),
                         'token': this.getToken(),
                     },
                 };
@@ -157,8 +160,28 @@ define(
                     installments.push({'value': i, 'text': text});
                 }
                 return installments;
-            }
+            },
 
+            getAvailableInstallmentsTypes: function () {
+                /* This will apply for future integrations
+                let config_installments_types = window.checkoutConfig.payment['globalpay_card'].installments_types;
+                let installments_options = [
+                    {'value':1, 'text': $t('this will apply for future integrations')},
+                ];
+                */
+                let installments_type = [
+                    {'value': -1, 'text': $t('Disable Installments')},
+                    {'value': 0, 'text': $t('Enable Installments')}
+                ];
+                /* This will apply for future integrations
+                for (let i = 0; i < installments_options.length; i++) {
+                    if (config_installments_types.includes(String(installments_options[i]['value']))) {
+                        installments_type.push(installments_options[i]);
+                    }
+                }
+                */
+                return installments_type;
+            }
         });
     }
 );
