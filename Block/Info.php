@@ -50,7 +50,7 @@ class Info extends ConfigurableInfo
                 $info['Status Detail'] = $payment->getAdditionalInformation('status_detail');
                 $info['Add Card Transaction'] = $payment->getAdditionalInformation('card_tr');
             }
-        } elseif ($method == 'paymentez_ltp') {
+        } elseif ($method == 'globalpay_ltp') {
             $info = [
                 'LinkToPay'          => $payment->getAdditionalInformation('ltp_url'),
                 'Expiration Days'    => $payment->getAdditionalInformation('expiration_days'),
