@@ -28,13 +28,13 @@ class PlaceOrder extends AbstractController
     protected $agreementsValidator;
 
     /**
-    * @var LinkToPayConfig
-    */
+     * @var LinkToPayConfig
+     */
     protected $config;
 
     /**
-    * @var StoreManagerInterface
-    */
+     * @var StoreManagerInterface
+     */
     protected $storeManager;
 
     /**
@@ -105,6 +105,7 @@ class PlaceOrder extends AbstractController
                 $this->_getCheckoutSession()->setLastOrderId($order->getId())
                     ->setLastRealOrderId($order->getIncrementId())
                     ->setLastOrderStatus($order->getStatus());
+                //$this->logger->debug(print_r($order->getBillingAddress()->getData(), true));
             } else {
                 $this->messageManager->addErrorMessage(
                     __('Order could not be generated.')
@@ -112,7 +113,6 @@ class PlaceOrder extends AbstractController
                 $this->_redirect("checkout/cart");
             }
             $url = $this->_getLinkToPayURL($order);
-            $this->logger->debug(print_r($url, true));
             if ($url) {
                 $order->getPayment()->setAdditionalInformation('expiration_days', $this->config->expirationDays());
                 $order->getPayment()->setAdditionalInformation('ltp_url', $url);
@@ -147,7 +147,7 @@ class PlaceOrder extends AbstractController
     protected function isValidationRequired()
     {
         return is_array($this->getRequest()->getBeforeForwardInfo())
-        && empty($this->getRequest()->getBeforeForwardInfo());
+            && empty($this->getRequest()->getBeforeForwardInfo());
     }
 
     /**
@@ -159,8 +159,7 @@ class PlaceOrder extends AbstractController
     protected function _getLinkToPayURL($order)
     {
         $requestBody = $this->_getLinkToPayRequestBody($order);
-        $url         = $this->_requestToLinkToPay($requestBody);
-        return $url;
+        return $this->_requestToLinkToPay($requestBody);
     }
 
     /**
@@ -179,27 +178,27 @@ class PlaceOrder extends AbstractController
         $viewOrderURL   = $urlBase.'sales/order/view/order_id/'.$order->getId();
         return [
             "user" => [
-               "id"        => $order->getCustomerId(),
-               "email"     => $email,
-               "name"      => $order->getCustomerFirstname(),
-               "last_name" => $order->getCustomerLastname()
-           ],
-           "order" => [
-               "dev_reference"     => $orderId,
-               "description"       => $description,
-               "amount"            => (float)$order->getGrandTotal(),
-               "installments_type" => $this->_mapInstallments(),
-               "currency"          => $order->getOrderCurrencyCode()
-           ],
-           "configuration" => [
-               "partial_payment"         => $this->config->allowPartialPayments(),
-               "expiration_days"         => $this->config->expirationDays(),
-               "allowed_payment_methods" => ["All", "Cash", "BankTransfer", "Card"],
-               "success_url"             => $viewOrderURL,
-               "failure_url"             => $viewOrderURL,
-               "pending_url"             => $viewOrderURL,
-               "review_url"              => $viewOrderURL
-           ]
+                "id"        => $order->getCustomerId() ?? 'Guest: '.$order->getRemoteIp(),
+                "email"     => $email,
+                "name"      => $order->getCustomerFirstname(),
+                "last_name" => $order->getCustomerLastname()
+            ],
+            "order" => [
+                "dev_reference"     => $orderId,
+                "description"       => $description,
+                "amount"            => (float)$order->getGrandTotal(),
+                "installments_type" => $this->_mapInstallments(),
+                "currency"          => $order->getOrderCurrencyCode()
+            ],
+            "configuration" => [
+                "partial_payment"         => $this->config->allowPartialPayments(),
+                "expiration_days"         => $this->config->expirationDays(),
+                "allowed_payment_methods" => ["All", "Cash", "BankTransfer", "Card"],
+                "success_url"             => $viewOrderURL,
+                "failure_url"             => $viewOrderURL,
+                "pending_url"             => $viewOrderURL,
+                "review_url"              => $viewOrderURL
+            ]
         ];
     }
 
@@ -222,11 +221,11 @@ class PlaceOrder extends AbstractController
         curl_setopt($ch, CURLOPT_POSTFIELDS, ($payload));
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json', 'Auth-Token:' . $authToken));
         try {
-          $response    = curl_exec($ch);
-          $getResponse = json_decode($response, true);
-          $paymentURL  = $getResponse['data']['payment']['payment_url'];
+            $response    = curl_exec($ch);
+            $getResponse = json_decode($response, true);
+            $paymentURL  = $getResponse['data']['payment']['payment_url'];
         } catch (Exception $e) {
-          $paymentURL = null;
+            $paymentURL = null;
         }
         curl_close($ch);
         return $paymentURL;
